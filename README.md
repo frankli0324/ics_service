@@ -2,6 +2,8 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/frankli0324/TimetableService)
 
+目前部署于http://ics.qwer.design
+
 ## 这个东西能干什么？
 
 通过大部分设备自带的订阅账户功能将西安电子科技大学的课表导入到手机自带的日历
