@@ -1,0 +1,4 @@
+users/*
+data/*
+.vscode
+__pycache__

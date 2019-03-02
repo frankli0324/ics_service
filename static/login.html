@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>西电课程表</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #fbfbfb;
+            text-align: center;
+        }
+
+        .light {
+            /* variables */
+            --color-primary: #44a0b3;
+            --color-grey: rgba(68, 160, 179, .06);
+            --color-dark: rgba(68, 160, 179, .5);
+            --color-semidark: rgba(68, 160, 179, .5);
+
+            text-align: center;
+            margin: 60px 0 0 0;
+            font-family: 'Segoe UI';
+            font-size: 14px;
+        }
+
+        .light .light-wrapper {
+            -webkit-transition: all 1s;
+            -o-transition: all 1s;
+            transition: all 1s;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+            position: relative;
+            height: 100%;
+            width: 360px;
+            margin: 0 auto;
+        }
+
+        .light a {
+            color: var(--color-primary);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--color-semidark);
+            margin-top: -3px;
+            padding-bottom: 2px;
+        }
+
+        .light * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .light .light-brand {
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto -50px auto;
+            border-radius: 50%;
+            -webkit-box-shadow: 0 4px 40px rgba(0, 0, 0, .07);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, .07);
+            padding: 10px;
+            background-color: #fff;
+            z-index: 1;
+            position: relative;
+        }
+
+        .light .light-brand img {
+            width: 100%;
+        }
+
+        .light .light-box {
+            width: 100%;
+            position: absolute;
+            left: 0;
+        }
+
+        .light .light-box-inner {
+            background-color: #fff;
+            -webkit-box-shadow: 0 7px 25px rgba(0, 0, 0, .08);
+            box-shadow: 0 7px 25px rgba(0, 0, 0, .08);
+            padding: 60px 25px 25px 25px;
+            text-align: left;
+            border-radius: 3px;
+        }
+
+        .light .light-box::after {
+            content: ' ';
+            -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+            box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+            -webkit-transform: translate(0, -92.6%) scale(.88);
+            -ms-transform: translate(0, -92.6%) scale(.88);
+            transform: translate(0, -92.6%) scale(.88);
+            border-radius: 3px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: -1;
+        }
+
+        .light .light-box p {
+            color: var(--color-semidark);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .light .light-box .light-group {
+            margin-bottom: 30px;
+        }
+
+        .light .light-box label {
+            margin-bottom: 5px;
+            display: inline-block;
+            width: 100%;
+            color: var(--color-semidark);
+            font-weight: 700;
+        }
+
+        .light .light-box label a {
+            float: right;
+        }
+
+        .light .light-box .light-input {
+            background-color: var(--color-grey);
+            color: var(--color-dark);
+            border: none;
+            border-radius: 3px;
+            padding: 15px 20px;
+            width: 100%;
+            outline: 0;
+        }
+
+        .light .light-box .light-btn {
+            display: inline-block;
+            width: 100%;
+            border: none;
+            color: #fff;
+            padding: 15px;
+            border-radius: 3px;
+            background-color: var(--color-primary);
+            -webkit-box-shadow: 0 2px 7px var(--color-semidark);
+            box-shadow: 0 2px 7px var(--color-semidark);
+            font-weight: 700;
+            outline: 0;
+            cursor: pointer;
+            -webkit-transition: all .5s;
+            -o-transition: all .5s;
+            transition: all .5s;
+        }
+
+        .light .light-box .light-btn:active {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .light .light-box .light-btn:hover {
+            opacity: .9;
+        }
+
+        .light .text-foot {
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            margin-top: 20px;
+            color: var(--color-semidark);
+        }
+
+        .light .light-footer {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 12px;
+            color: var(--color-semidark);
+            font-weight: 700;
+        }
+
+        .light .light-group.password-group {
+            -webkit-transition: all 1s;
+            -o-transition: all 1s;
+            transition: all 1s;
+        }
+
+        @media screen and (max-width: 320px) {
+            .light .light-wrapper {
+                width: 100%;
+            }
+
+            .light .light-box {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="light">
+        <div class="light-brand">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAEAAQADASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EACYQAQABAgYBBQEBAQAAAAAAAAABAhIRMUFRYYHBIXGRoeGx8NH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/ANAAAAAAEzOCmdegLicXUUZSsAAAAAAAAAAAAAAEXxj5WxbAAAAAAAAAAymrH2BU1Rp6uXzw5ETLtsCVy6XJmZzXbCZjAK5EzGTt0kRi7bAVy6S6VWw5bAVy6S6XbYdtgKm6S6VWw5bAVy6S6XbYdtgKm6S6XbYLYCuXSXSq2HLYCuXSXS7bDtsBWarpSu2FHLpdv3gtgt2Qq4mJydY5NKasfcVQAAGQM650+XIjFyZxnFcZCa6AMiKtFuTGIrlOqjIAAEAAAAAAAAAAAAZtHMIdFABHJjFGUtEVZi40j19XUUZLGhFeXutFenfgGbVk1GdABAAAAAAAAAAAAAAAAAAAAAABNWik1aC47Rr15WijXrysaEV6d+For078AzaslXSJqxF0l0iRYi6S6QixF0l0hFiLpLpCLEXSXSEWIukukIsRdJdIRYi6S6QixF0l0hFiLpLpCLEXSXSEWIukukItNWjl0uTOIRdGvXlaKNevKxoRXp34WivTvwDNrZHLJuIiyOSyOVgqLI5/3RZHKwEWRyWRz/ulgJsjlyyOVgIsjl2yOf8AdKARZHJZHKwEWRz/ALosjlYCLI5LI5/3SwE2Ry5ZHKwEWRz/ALp2yOVAIsjksjlYCLI5/wB0WRysBFkcpqiIwwaor078AUa9eVoo168rARXp34WivTvwDNuwbgAAOYxvHyirNOE7A1xjePl1jgujUFg5OU+wGMbwYxvHyxdwnafgGuMbw6wbQDoM684BeMbx8mMbx8ssJMJ2BsM6M+mgDmMbw6wBtjG8fJjG8fLLCdp+HAbjkZR7OgIr078LRXp34Ao168rRRr15WAivTvwtFenfgGbdg3AABlVmunJFWbmM7yIuvRyjXpOMro1Bbk5T7OuTlPsKyjOPdswdxnefkQnOWsZQxbxkKM6849mjOvOAdoyn3K8u/wDqMZ3MZ3kRVGfX/GjOjPpoKMWzAG7KrOXMZ3n5BGtOUOuRlDooivTvwtFenfgCjXrytFGvXlYCK9O/C0V6d+AZt2DcAABzCNo+HQHMI2j4dAAAHMI2j4MI2j4dAcwjaHQAABzCNo+DCNo+HQDIABzCNodAcwjaPgwjaPh0AAARXp34WivTvwBRr15WijXrysBFenfhaK9O/AM27BuAACKpmJwhN07lWaqYiY9YETdO66ZmccU1REYYFGvQNHJ9IdcnKfYVndO5dO7kZx7tbY2EZ3Tu1Yzm1jKBXUVTMekLZ15x7A5dO5dO7tMRMertUREekaiFMzPpK2dGfX/GgoyundqxB26dy6d2lsbMpzkRrHrES65GUOiiK9O/C0V6d+AKNevK0Ua9eVgIr078LRXp34Bm3YNwAAZVZkVYRguaYlyyNwTNWLtGvTtkbqiMAdcnKfZ0BjHoq+dnbI3LI3EQ1jKE2QsUZ15x7NHJiJBnFWBNWKrI3LI3Ecoz6/40TFMQoUYN0WQDl87JmcZxXZG5ZG4ioyh0BRFenfhaK9O/AFGvXlaKNevKwEV6d+For078AzbsG4AAAmasHL+Pv8BYi/j7/FROIOgACL+Psv4+/wABYi/hYAJmrAFCL+Pv8L+Pv8BYmKsVAAi/gFiL+Pv8L+PsFgAIr078LRXp34Ao168rRRr15WAivTvwtFenfgGbdg3AABlVm7FOMY4uVZqpqiIETNOGrtGvRVMThgUag0cnKfZ1ycp9hWUesrs5+v1EZx7tLo3/AKIzaxlHsylrGUCus6849mjOvOPYHIpx1JpwjN2mYiPUqmJj03EKM+v+NGdGfX/GgoxbMQXZz9fqJjCcGl0b/wBZznIjWnKHXKcodFEV6d+For078AUa9eVoo168rARXp34WivTvwDNuwbgAAiqmZnGE2zt/GoDK2dv4umMM1ADk+sOgMrZLZ2/jUBlbLUAEVRM5LAZW1bfwtnb+NQEUxMesrABlbLUBlbO38LZ2agOR6Rg6ACK9O/C2decA7Rr15WijVYCK9FuTGMYAxaUzozdVGwiKt1ooAAAAAAAAAAAAAAAAAAAADk1RGoO5MZnGcXZqx9naadZEXEYQ6AoACKqcfWM2bdyYicwYjSzks5+v1UZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZjSzn6/Szn6/QZuxEzk0imPdSKiKd1gAAD//Z" alt="logo">
+        </div>
+        <div class="light-wrapper">
+            <div class="light-box light-login">
+                <div class="light-box-inner">
+                    <form>
+                        <p>Provide IDS login information to continue</p>
+                        <div class="light-group">
+                            <label>School ID</label>
+                            <input name="id" class="light-input">
+                        </div>
+                        <div class="light-group password-group">
+                            <label>Xidian IDS Password</label>
+                            <input type="password" name="password" autocomplete="current-password" class="light-input">
+                        </div>
+                        <button class="light-btn" formaction="submit">
+                            Get ICS Resource
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="light-footer">
+            Web Design By itskodinger. Service Maintained By Frank
+        </footer>
+    </div>
+    <script>
+        var Auth = {
+            vars: {
+                light: document.querySelector('.light'),
+                lowin_brand: document.querySelector('.light-brand'),
+                lowin_wrapper: document.querySelector('.light-wrapper'),
+                lowin_login: document.querySelector('.light-login'),
+                lowin_wrapper_height: 0,
+                login_back_link: document.querySelector('.login-back-link'),
+                login_link: document.querySelector('.login-link'),
+                password_group: document.querySelector('.password-group'),
+                password_group_height: 0,
+                lowin_footer: document.querySelector('.light-footer'),
+                box: document.getElementsByClassName('light-box'),
+                option: {}
+            },
+            login(e) {
+                Auth.vars.lowin_login.style.display = 'block';
+                Auth.vars.lowin_login.classList.remove('light-animated');
+                Auth.vars.lowin_login.className += ' light-animatedback';
+
+                Auth.setHeight(Auth.vars.lowin_login.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
+
+                e.preventDefault();
+            },
+            setHeight(height) {
+                Auth.vars.lowin_wrapper.style.minHeight = height + 'px';
+            },
+            brand() {
+                Auth.vars.lowin_brand.classList += ' light-animated';
+                setTimeout(() => {
+                    Auth.vars.lowin_brand.classList.remove('light-animated');
+                }, 1000);
+            },
+            init(option) {
+                Auth.setHeight(Auth.vars.box[0].offsetHeight + Auth.vars.lowin_footer.offsetHeight);
+
+                Auth.vars.password_group.style.height = Auth.vars.password_group.offsetHeight + 'px';
+                Auth.vars.password_group_height = Auth.vars.password_group.offsetHeight;
+                Auth.vars.lowin_wrapper_height = Auth.vars.lowin_wrapper.offsetHeight;
+
+                Auth.vars.option = option;
+                Auth.vars.lowin_login.querySelector('form').setAttribute('action', option.login_url);
+
+                var len = Auth.vars.box.length - 1;
+
+                for (var i = 0; i <= len; i++) {
+                    if (i !== 0) {
+                        Auth.vars.box[i].className += ' light-flip';
+                    }
+                }
+                Auth.vars.login_link.addEventListener("click", (e) => {
+                    Auth.brand();
+                    Auth.login(e);
+                });
+            }
+        }
+        Auth.init({
+            login_url: '#login'
+        });
+    </script>
+</body>
+
+</html>
