@@ -13,6 +13,7 @@
 ## Getting Started
 
 //TODO
+[请先参阅SCNU的使用说明](https://i.scnu.edu.cn/ical/doc)
 
 ## License Agreement
 
