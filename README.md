@@ -27,5 +27,6 @@
 ## 备注: 如何保证我的密码不被泄漏
 
 不能保证。  
+因为不仅本页面没有https，就连ehall一站式服务大厅也没有https。  
 但是由于本页面是开源的。你可以自己按照原样部署一份。  
 要是觉得不安全，又嫌自己部署太麻烦，那你可以使用[xidian-scripts](https://github.com/xdlinux/xidian-scripts)获取日历文件(.ics)自行导入。对IOS用户，目前尚未找到能直接导入ics的方式。
