@@ -37,4 +37,4 @@ def export(uuid):
     return str(loader.load(uuid))
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 1234)
+    app.run('127.0.0.1', 1234)
