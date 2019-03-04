@@ -29,10 +29,10 @@ def generate():
         )
         if ret is False:
             return '用户名或密码错误'
-        return redirect('/export/'+ret)
+        return redirect('/export/'+ret+'.ics')
 
 
-@app.route('/export/<uuid>')
+@app.route('/export/<uuid>.ics')
 def export(uuid):
     return str(loader.load(uuid))
 
