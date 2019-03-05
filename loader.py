@@ -12,10 +12,8 @@ def load(uuid):
         for day_cnt in range(len(courseList[week_cnt])):
             for course in courseList[week_cnt][day_cnt]:
                 e = Event()
-                if course['name'] == None:
-                    course['name'] = 'none'
-                if course['location'] == None:
-                    course['location'] = 'none'
+                if course['sectionSpan'][0] > 10:
+                    continue
                 e.add(
                     "description",
                     '课程名称：'+course['name'] +
