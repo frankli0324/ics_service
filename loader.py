@@ -14,6 +14,8 @@ def load(uuid):
                 e = Event()
                 if course['sectionSpan'][0] > 10:
                     continue
+                if course['location'] == None:
+                    course['location'] = 'unknown'
                 e.add(
                     "description",
                     '课程名称：'+course['name'] +
