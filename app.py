@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, make_response
 import persist
 import loader
 
@@ -34,7 +34,9 @@ def generate():
 
 @app.route('/export/<uuid>.ics')
 def export(uuid):
-    return str(loader.load(uuid))
+    resp = make_response(loader.load(uuid))
+    resp.mimetype = 'text/calendar'
+    return resp
 
 if __name__ == '__main__':
     app.run('127.0.0.1', 1234)
